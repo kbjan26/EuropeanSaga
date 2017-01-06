@@ -1,0 +1,119 @@
+.well {
+	background-color: #fff;
+	padding: 30px;
+	border: 1px solid #DADADA;
+	overflow: hidden;
+	clear: both;
+}
+
+.secondary .widget {
+	margin-bottom: 50px;
+	color: #C1C0C0;
+	overflow: hidden;
+}
+
+.secondary .widget>h3 {
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+	margin-top: 0;
+	color: #636467;
+}
+
+.popular-posts-wrapper .post {
+	float: left;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+.popular-posts-wrapper .post .post-image {
+	width: 60px;
+	height: 60px;
+	float: left;
+	display: block;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: #DADADA;
+	background-position: center center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.secondary .widget a {
+	color: #C1C0C0;
+}
+
+.popular-posts-wrapper .post .post-image img {
+	border-radius: 4px;
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.popular-posts-wrapper .post .post-content {
+	margin-left: 80px;
+}
+
+.post-content a:hover{
+	text-decoration: none;
+	color:#DA4453
+}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+
+input[type="search"] {
+	padding: 3px;
+}
+
+input[type="search"] {
+	color: #666;
+	border: 1px solid #E8E8E8;
+	border-radius: 3px;
+}
+
+button,input,select,textarea {
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+}
+
+.input-group-btn:last-child>.btn {
+	margin-left: 0;
+}
+
+.secondary .widget:last-child {
+	margin-bottom: 0px;
+}
+
+.tagcloud {
+	margin-top: 25px;
+}
+
+.tagcloud {
+	margin-top: 25px;
+}
+
+.tagcloud a {
+	padding: 6px 7px;
+	margin-right: 0;
+	margin-bottom: 4px;
+	line-height: 100%;
+	display: inline-block;
+	color: #FFF !important;
+	background-color: #DADADA;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	font-size: 12px !important;
+}
+
+.tagcloud a:hover {
+	background-color: #DA4453;
+	border-color: #DA4453;
+	text-decoration: none;
+	transition: all 0.3s;
+}

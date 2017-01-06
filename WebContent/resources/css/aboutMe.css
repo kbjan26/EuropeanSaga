@@ -1,0 +1,44 @@
+#text-59.widget {
+	margin: 0;
+}
+
+#text-59 {
+	background: white;
+}
+
+.widget,.widget li {
+	word-wrap: break-word;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary
+	{
+	display: block;
+}
+
+.stb-about-widget {
+	margin: 10px;
+	padding: 10.5px 10px;
+	overflow: auto;
+}
+
+.stb-about-widget h3 {
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0;
+}
+
+h3 {
+	font-size: 22px;
+}
+
+.stb-about-widget h3 {
+	color: #222;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	line-height: 1.2;
+	margin: 0 0 16px;
+}
+
+.Balaji {
+    border-top: 1px solid #6B6B6B;
+}

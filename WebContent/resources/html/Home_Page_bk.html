@@ -1,0 +1,269 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="resources/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/angular.js"></script>
+<script src="resources/js/angular-route.min.js"></script>
+<script src="resources/js/ui-bootstrap-tpls-0.13.0.js"></script>
+<script src="resources/js/angular-animate.js"></script>
+<script type="text/javascript" src="resources/js/pace.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/pace.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/index.css">
+<link rel="stylesheet" type="text/css" href="resources/css/footer_home.css">
+<link rel="stylesheet" type="text/css" href="resources/css/aboutMe.css">
+<link rel="stylesheet" type="text/css" href="resources/css/secondary-div.css">
+<link rel="stylesheet" type="text/css" href="resources/css/complete_experience.css">
+<link rel="stylesheet" type="text/css" href="resources/css/destinations.css">
+<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/gallery.css">
+<script type="text/javascript" src="resources/js/internal/home_page.js"></script>
+<script type="text/javascript" src="resources/js/internal/gallery.js"></script>
+<script type="text/javascript" src="resources/js/internal/destinations.js"></script>
+<script type="text/javascript" src="resources/js/internal/soloTravelling.js"></script>
+<script type="text/javascript" src="resources/js/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+<link rel="stylesheet" href="resources/css/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="resources/js/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<link rel="stylesheet" href="resources/css/fancybox/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="resources/js/fancybox/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="resources/js/fancybox/jquery.fancybox-media.js?v=1.0.6"></script>
+<link rel="stylesheet" href="resources/css/fancybox/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="resources/js/fancybox/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+</head>
+<body ng-controller="indexController">
+	<header id="masthead" class="site-header" role="banner"
+		style="margin-bottom: 76px;">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="site-navigation-inner col-sm-12">
+						<div class="navbar-header">
+							<button type="button" class="btn navbar-toggle"
+								data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<div id="logo">
+								<h1 class="site-name">
+									<a class="navbar-brand" href="" rel="home">EUROPEAN SAGA
+										- A SOLO ADVENTURE</a>
+								</h1>
+							</div>
+						</div>
+						<div class="collapse navbar-collapse navbar-ex1-collapse">
+							<ul class="nav navbar-nav">
+								<li ng-click="loadItemDetails(menuItem.name)"
+									ng-class="{dropdown: menuItem.hasChild,active: menuItem.isActive}"
+									ng-repeat="menuItem in mainMenu"><a
+									ng-click="loadItemDetails(menuItem.name)"
+									class="dropdown-toggle centerAlignItems" data-toggle="dropdown"
+									href="#{{menuItem.url}}"> <span
+										class="{{menuItem.iconClass}}"></span> {{menuItem.name}}<span
+										ng-if="menuItem.hasChild" class="caret"></span>
+								</a>
+									<ul ng-class="{'dropdown-menu': menuItem.hasChild}"
+										ng-if="menuItem.hasChild">
+										<li ng-repeat="(key, value) in submenu[menuItem.name]"><a
+											href="#{{value.url}}" ng-click="loadCountryDetails(value)">{{value.name}}</a></li>
+									</ul></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div ng-if="isHomePage" class="top-section">
+		<div class="imgSlider">
+			<carousel interval="myInterval"> <slide ng-repeat="slide in imageSlides" active="slide.active"> <img ng-src="{{slide.imagePath}}" srcset="{{slide.imagePath}} 1920w, {{slide.mediumImagePath}} 1024w"
+				data-medium-file="{{slide.mediumImagePath}}" data-large-file="{{slide.imagePath}}" data-orig-file="{{slide.imagePath}}" sizes="(max-width: 1920px) 100vw, 1920px" data-orig-size="1920,600"
+				style="height: 100%; width: 100%; margin: auto;">
+			<div class="carousel-caption">
+				<h4 class="carouselCaptionTitle">{{slide.countryDetails}}</h4>
+				<p class="carouselExcerptIntro">{{slide.imageText}}</p>
+			</div>
+			</slide> </carousel>
+		</div>
+	</div>
+	<div class="homePageContents">
+		<div class="container main-content-area">
+			<div class="row side-pull-left">
+				<div class="main-content-inner col-sm-12 col-md-8">
+					<div ng-view></div>
+				</div>
+				<div class="secondary widget-area col-sm-12 col-md-4" role="complementary">
+					<section id="text-59" class="widget widget_text">
+						<div class="widget-wrap">
+							<div class="textwidget">
+								<div class="stb-about-widget">
+									<h3>About Solo Traveler</h3>
+								</div>
+								<div class="stb-about-widget Balaji">
+									<img width="125" height="123" src="resources/images/Balaji_1.jpg" alt="Balaji Kannan"></img>
+									<span class="cfa-text">Name : Balaji Kannan.</span> 
+									<span class="cfa-text">Nationality : Indian.</span>
+									<span class="cfa-text">Occupation : Software Engineer.</span> 
+									<span class="cfa-text">Hobbies :Swimming,Numismatist,
+									Notaphilist,Philatelist,Reading books,Solo
+										traveller(virtue of being a short term European expat).</span>
+								</div>
+							</div>
+						</div>
+					</section>
+					<div class="well">
+						<aside class="widget">
+							<h3 class="widget-title">Popular Posts</h3>
+							<div class="popular-posts-wrapper">
+								<div class="post" ng-repeat="popularPost in popularPosts">
+									<div class="post-image"> <a href="{{popularPost.url}}"><img width="60" height="60" src="{{popularPost.imageLocation}}" class="attachment-tab-small size-tab-small wp-post-image"
+											alt="city-landscape-slider" scale="0"></a>
+									</div>
+									<div class="post-content">
+										<a href="{{popularPost.url}}">{{popularPost.experienceDescription}}</a>
+									</div>
+								</div>
+							</div>
+						</aside>
+						<aside id="search-2" class="widget widget_search">
+							<form role="search" method="get" class="form-search">
+								<div class="input-group">
+									<label class="screen-reader-text" for="s">Search for:</label> <input
+										type="text" class="form-control search-query"
+										placeholder="Search…" value="" name="s" title="Search for:">
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-default" name="submit" id="searchsubmit" value="Search" style="">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+									</span>
+								</div>
+						</aside>
+						<aside id="tag_cloud-2" class="widget widget_tag_cloud">
+							<h3 class="widget-title">Tags</h3>
+							<div class="tagcloud" style="display: block;">
+								<a href="santorini" style="font-size: 8pt;">Santorini</a> <a
+									href="northernLights" style="font-size: 12.516129032258pt;">Northern
+									Lights</a>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="disqus_thread"></div>
+	<section class="counter front-page-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-md-3 widget_illdy_counter">
+					<span class="counter-number">10</span><span
+						class="counter-description">Countries</span>
+				</div>
+				<div class="col-sm-4 col-md-3 widget_illdy_counter">
+					<span class="counter-number">12+</span><span
+						class="counter-description">Cities</span>
+				</div>
+				<div class="col-sm-4 col-md-3 widget_illdy_counter">
+					<span class="counter-number">20+</span><span
+						class="counter-description">Destinations</span>
+				</div>
+			</div>
+			<!--/.row-->
+		</div>
+		<!--/.container-->
+	</section>
+	<div class="footer-area">
+		<footer class="colophon site-footer" role="contentinfo">
+			<div class="site-info container">
+				<div class="row">
+					<nav class="menu-social" class="social-icons">
+						<ul class="menu-social-items social-menu">
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2036"><a href="https://twitter.com/colorlib" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://twitter.com/colorlib', 'Twitter');"><i
+									class="social_icon fa"><span>Twitter</span></i></a></li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2037"><a href="https://www.facebook.com/colorlib" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.facebook.com/colorlib', 'Follow us on Facebook');"><i
+									class="social_icon fa"><span>Follow us on Facebook</span></i></a></li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2038"><a href="https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew', 'Follow us on Youtube');"><i
+									class="social_icon fa"><span>Follow us on Youtube</span></i></a></li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2039"><a href="https://plus.google.com/+Colorlib" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://plus.google.com/+Colorlib', 'Follow us on Google+');"><i
+									class="social_icon fa"><span>Follow us on Google+</span></i></a></li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2040"><a href="https://github.com/puikinsh/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://github.com/puikinsh/', 'Follow us on Github');"><i
+									class="social_icon fa"><span>Follow us on Github</span></i></a></li>
+						</ul>
+					</nav>
+					<nav role="navigation" class="col-md-6">
+						<ul class="menu-flat-footer nav footer-nav clearfix">
+							<li ng-repeat="footerItem in footerMenuItem"><a
+								href="{{footerItem.url}}">{{footerItem.name}}</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="scroll-to-top" style="display: block;">
+				<i class="fa fa-angle-up"></i>
+			</div>
+		</footer>
+	</div>
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+ <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f56669a6aa7e88"></script> 
+	<script>
+		$(document).ready(function() {
+			   //Check to see if the window is top if not then display button
+		    jQuery(window).scroll(function(){
+		        if(jQuery(this).scrollTop()>100){
+		            jQuery(".scroll-to-top").fadeIn()
+		        }else{
+		            jQuery(".scroll-to-top").fadeOut()
+		        }
+		    });
+
+		    //Click event to scroll to top
+		    jQuery(".scroll-to-top").click(function(){
+		        jQuery("html, body").animate({scrollTop:0},800);
+		        return false;
+		    });
+			$(".fancybox-button").fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+				closeBtn : false,
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons : {}
+				}
+			});
+			$(".fancybox").fancybox();
+			  $(".navbar-nav li a").click(function(event) {
+				  console.log("Event clicked ="+event);
+				    $(".navbar-collapse").collapse('hide');
+				  });
+			  $(".navbar-nav li ul li a").click(function(event) {
+				    $(".navbar-collapse").collapse('hide');
+				  });
+		});
+	</script>
+	<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//www-europeansaga-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//www-europeansaga-com.disqus.com/count.js" async></script>
+</body>
+</html>
